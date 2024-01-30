@@ -32,12 +32,10 @@
       "dest": "/$1"
     }
   ],
+  "env": {
+    "DATABASE_URL": "DATABASE_URL"
+  },
   "build": {
-    "env": {
-      "DATABASE_URL": "DATABASE_URL"
-    },
-    "scripts": {
-      "build": "prisma generate && next build"
-    }
+    "use": "@vercel/node"
   }
 }
