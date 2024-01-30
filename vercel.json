@@ -1,0 +1,31 @@
+{
+    "builds": [
+      {
+        "src": "next.config.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "api/*",
+        "use": "@vercel/node"
+      }
+    ],
+    "version": 2,
+    "functions": {
+      "api/**/*.js": {
+        "includeFiles": "api/**/*"
+      }
+    },
+    "routes": [
+      { "handle": "filesystem" },
+      { "src": "/.*", "dest": "/index.js" }
+    ],
+    "build": {
+      "scripts": {
+        "build": "prisma generate && next build"
+      },
+      "env": {
+        "DATABASE_URL": "DATABASE_URL"
+      }
+    }
+  }
+  
